@@ -490,7 +490,7 @@ class CalculatorCompiler:
         while True:
             try:
                 line = input("calc> ").strip()
-                if line.lower() in ['quit', 'exit', 'sair', 'q', 'end', 'fim', 'stop', 'break', 'return'] :
+                if line.lower() in ['quit', 'exit', 'sair', 'end', 'fim', 'stop', 'break', 'return'] :
                     break
                 if not line:
                     continue
@@ -503,13 +503,46 @@ class CalculatorCompiler:
                 break
             except EOFError:
                 break
+            
     
+    def run_file(self, filename: str):
+        """Executa arquivo"""
+        try:
+            with open(filename, 'r', encoding='utf-8') as file:
+                source_code = file.read()
+            
+            print(f"=== EXECUTANDO ARQUIVO: {filename} ===")
+            success = self.compile_and_run(source_code)
+            
+            if success:
+                print("\nExecução concluída com sucesso!")
+            else:
+                print("\nExecução falhou!")
+                sys.exit(1)
+                
+        except FileNotFoundError:
+            print(f"ERRO: Arquivo '{filename}' não encontrado")
+            sys.exit(1)
+        except Exception as e:
+            print(f"ERRO ao ler arquivo: {e}")
+            sys.exit(1) 
 
 def main():
-
+    parser = argparse.ArgumentParser(description='Compilador de Calculadora')
+    parser.add_argument('file', nargs='?', help='Arquivo para executar')
+    parser.add_argument('-i', '--interactive', action='store_true', 
+                       help='Modo interativo')
+    
+    args = parser.parse_args()
+    
     compiler = CalculatorCompiler()
     
-    compiler.run_interactive()
+    if args.file:
+        compiler.run_file(args.file)
+    elif args.interactive:
+        compiler.run_interactive()
+    else:
+        compiler.run_interactive()
 
 if __name__ == "__main__":
     main()
