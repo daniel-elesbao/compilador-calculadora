@@ -6,10 +6,15 @@ Este compilador está escrito em python e para rodar basta executar o arquivo `.
 ## Exemplos de Uso da Calculadora
 
 ## Exemplo 1: Operações básicas
+
 x = 10
+
 y = 20
+
 soma = x + y
+
 print(soma)
+
 print(x * y - 50)
 
 ## Exemplo 2: Expressões complexas
