@@ -1,4 +1,3 @@
-imprima("Digite os valores de a, b e c:")
 leia(a)
 leia(b) 
 leia(c)

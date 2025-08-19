@@ -49,7 +49,6 @@ imprima(dobro)
 ## Exemplo 5: Programa completo
 
 # Calculadora de equação do segundo grau (discriminante)
-imprima("Digite os valores de a, b e c:")
 
 leia(a)
 
