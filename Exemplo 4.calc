@@ -1,4 +1,4 @@
-print(10 + 20)
-read(numero)
+imprima(10 + 20)
+leia(numero)
 dobro = numero * 2
-print(dobro)
+imprima(dobro)
